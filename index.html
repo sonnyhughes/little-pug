@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Little Pug Test Page</title>
-  <meta name="description" content="A lightweight landing page for testing LinkedIn ad click-throughs." />
+  <title>Little Pug Analytics Test Page</title>
+  <meta name="description" content="A tiny landing page with a tiny pug." />
+
+  <!-- Initialize dataLayer -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    // Push initial pageview event
+    window.dataLayer.push({
+      event: 'page_load',
+      page_name: 'Little Pug Analytics Test Page'
+    });
+  </script>
 
   <!-- Google Tag Manager -->
   <script>
@@ -83,17 +93,30 @@
 
   <main>
     <img src="https://www.akc.org/wp-content/uploads/2017/11/Pug-puppy-standing-in-profile-on-a-white-background.jpg" alt="Little Pug" />
-    <h1>Little Pug Test Page</h1>
-    <p>Welcome! This is a tiny landing page with a tiny pug.</p>
-    <a href="#" class="button">Test Button</a>
+    <h1>Little Pug Analytics Test Page</h1>
+    <p>Welcome to this tiny landing page with a tiny pug.</p>
+    <a href="#" id="testButton" class="button">Click Me</a>
   </main>
 
   <footer>
-    © <span id="year"></span> Little Pug Test Page
+    © <span id="year"></span> Little Pug Analytics Test Page
   </footer>
 
   <script>
+    // Update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Example button click event push
+    document.getElementById('testButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.dataLayer.push({
+        event: 'button_click',
+        button_id: 'testButton',
+        button_text: 'Click Me'
+      });
+      console.log('dataLayer event pushed: button_click');
+      alert('Button click event pushed to dataLayer!');
+    });
   </script>
 </body>
 </html>
