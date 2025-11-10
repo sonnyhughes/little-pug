@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pug Demo — About</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NBXBPWV');</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' x='6' font-size='48'%3E🐶%3C/text%3E%3C/svg%3E"> 
+
+
+<style>
+  :root {
+    --fg:#3a2f28; --bg:#fffaf3; --brand:#8b5e34; --muted:#6b5a4a;
+    --card:#fff; --border:#ead9c2; --accent:#e9d5b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+  header{background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:10;}
+  .wrap{max-width:960px;margin:0 auto;padding:1rem;display:flex;align-items:center;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;color:var(--brand)}
+  .brand img{width:40px;height:32px}
+  nav a{margin-right:1rem;text-decoration:none;color:var(--brand);font-weight:700}
+  main{padding:2rem 1rem;max-width:960px;margin:0 auto}
+  h1{font-size:2rem;margin:.25rem 0}
+  p.lead{color:var(--muted);margin-top:0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin:1rem 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center}
+  .hero img{width:100%;border-radius:18px;border:1px solid var(--border);background:var(--accent)}
+  .btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #8b5e3433;background:#f7e9d3;text-decoration:none;cursor:pointer}
+  .btn:hover{background:#f3dfc0}
+  footer{border-top:1px solid var(--border);padding:1rem;text-align:center;color:var(--muted)}
+  .tag{display:inline-block;background:#fde68a;color:#7c5b2e;padding:.15rem .5rem;border-radius:999px;font-size:.8rem;border:1px solid #f3c97b}
+</style>
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBXBPWV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img src="https://www.akc.org/wp-content/uploads/2017/11/Pug-puppy-standing-in-profile-on-a-white-background.jpg" alt="Pug logo"/>
+      <span>Pug Demo</span>
+      <span class="tag">GTM • GA4</span>
+    </div>
+    <nav>
+      <a id="btn-nav-home" href="index.html" aria-label="Go to Home">Home</a>
+      <a id="btn-nav-about" href="about.html" aria-label="Learn about us">About</a>
+      <a id="btn-nav-contact" href="contact.html" aria-label="Open contact page">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<section class="card hero">
+  <img src="https://www.akc.org/wp-content/uploads/2017/11/Pug-puppy-standing-in-profile-on-a-white-background.jpg" alt="Pug mascot looking curious">
+  <div>
+    <h1>About the Pug Demo</h1>
+    <p class="lead">Three pages. Three clickable bits each. Endless pug charisma for your analytics tests.</p>
+    <p><a id="btn-about-home" class="btn" href="index.html">Back to home (to the doggo)</a></p>
+    <p><button id="btn-about-subscribe" class="btn" type="button" onclick="alert('You are now on the PugList!')">Join the PugList</button></p>
+    <p><a id="btn-about-contact" class="btn" href="contact.html">Talk to our handlers</a></p>
+  </div>
+</section>
+
+</main>
+<footer>🐶 Little Pug-powered test site • For GTM/GA4 demo only</footer>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function dlPageView(){
+    window.dataLayer.push({
+      event: 'custom_page_view',
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname
+    });
+  }
+  function bindDLClicks(){
+    const ids = [
+      'btn-home-learn-more','btn-home-cta','btn-home-contact',
+      'btn-about-home','btn-about-subscribe','btn-about-contact',
+      'btn-contact-send','btn-contact-home','btn-contact-about',
+      'btn-nav-home','btn-nav-about','btn-nav-contact'
+    ];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', function(){
+        const text = (el.innerText || el.textContent || '').trim();
+        window.dataLayer.push({
+          event: 'button_click',
+          element_id: id,
+          element_text: text,
+          page_location: location.href
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    dlPageView();
+    bindDLClicks();
+  });
+</script>
+
+</body>
+</html>
